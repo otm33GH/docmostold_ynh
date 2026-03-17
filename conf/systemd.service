@@ -1,5 +1,5 @@
 [Unit]
-Description=Papra: document archiving platform
+Description=Docmost 
 After=network.target
 
 [Service]
