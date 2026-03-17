@@ -36,7 +36,14 @@ ram.runtime = "500M"
     [install.init_main_permission]
     type = "group"
     default = "visitors"
-
+    
+    [install.storage_driver]
+    ask.en = "Storage driver"
+    ask.fr = "Storage driver"
+    type = "select"
+    choices = ["local", "s3"]
+    default = "local"
+    
 [resources]
     [resources.sources]
 
