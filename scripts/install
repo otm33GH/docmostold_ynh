@@ -15,7 +15,6 @@ auth_secret=$(ynh_string_random --length=32)
 ynh_app_setting_set --key=auth_secret --value="$auth_secret"
 
 ynh_app_setting_set --key=max_upload_size --value=$max_upload_size
-max_up=$((max_upload_size * 1024 * 1024))
 
 email_smtp_host=$(cat /etc/yunohost/current_host)
 email_smtp_user="$app"
