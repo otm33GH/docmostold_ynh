@@ -1,10 +1,10 @@
 #:schema https://raw.githubusercontent.com/YunoHost/apps/main/schemas/manifest.v2.schema.json
 
 packaging_format = 2
-id = "papra"
-name = "Papra"
-description.en = "Document archiving platform"
-description.fr = "Plateforme d'archivage de documents"
+id = "docmost"
+name = "Docmost"
+description.en = "Collaborative wiki and documentation"
+description.fr = "Wiki collaboratif et documentation"
 version = "0.70.3~ynh1"
 
 maintainers = ["otm33GH"]
@@ -64,7 +64,10 @@ ram.runtime = "500M"
     main.auth_header = false
 
     [resources.ports]
-
+    
+    [resources.database]
+    type = "postgresql"
+    
     [resources.nodejs]
     version = "24"
     
