@@ -43,7 +43,7 @@ ynh_config_add --template=".env" --destination="$install_dir/.env"
 pushd "$install_dir"
 	ynh_hide_warnings corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
 	ynh_exec_as_app pnpm install --frozen-lockfile
-	ynh_exec_as_app pnpm run build
+	ynh_exec_as_app pnpm run build --verbose 2>&1
 	ynh_exec_as_app pnpm store prune
 popd
 
