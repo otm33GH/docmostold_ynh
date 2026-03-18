@@ -12,7 +12,6 @@ maintainers = ["otm33GH"]
 [upstream]
 license = "GPL-3.0-only"
 website = "https://docmost.com/"
-demo = "https://demo.papra.app/"
 admindoc = "https://docmost.com/docs/"
 code = "https://github.com/docmost/docmost"
 
