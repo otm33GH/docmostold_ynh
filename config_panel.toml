@@ -71,7 +71,7 @@ name.fr = "Stockage"
     ask.fr = "Storage driver"
     type = "select"
     choices = ["local", "s3"]
-    bind = "DOCUMENT_STORAGE_DRIVER:__INSTALL_DIR__/.env"
+    bind = "STORAGE_DRIVER:__INSTALL_DIR__/.env"
 
 [main.storage_s3]
 name.en = "S3 storage"
