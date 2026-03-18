@@ -48,7 +48,7 @@ pushd "$install_dir"
 popd
 
 chown -R $app:$app $install_dir
-ln -s "$datadir" "$install_dir/data"
+ln -s "$data_dir" "$install_dir/data"
 
 #=================================================
 # SYSTEM CONFIGURATION
