@@ -31,7 +31,7 @@ ram.runtime = "500M"
 
 [install]
     [install.domain]
-    type = "domain"
+    #type = "domain"
 
     [install.init_main_permission]
     type = "group"
