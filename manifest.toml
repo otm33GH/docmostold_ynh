@@ -31,7 +31,10 @@ ram.runtime = "500M"
 
 [install]
     [install.domain]
+    type = "domain"
+    [install.path]
     type = "path"
+    default = "/docmost"
 
     [install.init_main_permission]
     type = "group"
