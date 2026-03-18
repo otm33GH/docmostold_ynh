@@ -26,7 +26,6 @@ pushd "$install_dir"
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run editor-ext:build
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:build
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run client:build
-	ynh_exec_as_app pnpm store prune
 popd
 
 chown -R $app:$app $install_dir
