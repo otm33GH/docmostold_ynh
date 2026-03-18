@@ -11,10 +11,10 @@ maintainers = ["otm33GH"]
 
 [upstream]
 license = "GPL-3.0-only"
-website = "https://papra.app/fr/"
+website = "https://docmost.com/"
 demo = "https://demo.papra.app/"
-admindoc = "https://docs.papra.app/"
-code = "https://github.com/papra-hq/papra"
+admindoc = "https://docmost.com/docs/"
+code = "https://github.com/docmost/docmost"
 
 [integration]
 yunohost = ">= 12.1.39"
@@ -58,7 +58,6 @@ ram.runtime = "500M"
     [resources.install_dir]
 
     [resources.data_dir]
-    subdirs = ["uploads"]
     
     [resources.permissions]
     main.url = "/"
