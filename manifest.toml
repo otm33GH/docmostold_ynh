@@ -64,6 +64,9 @@ ram.runtime = "500M"
     main.auth_header = false
 
     [resources.ports]
+
+    [resources.apt] 
+    packages = "postgresql redis-server"    
     
     [resources.database]
     type = "postgresql"
