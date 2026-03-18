@@ -44,10 +44,10 @@ pushd "$install_dir"
 	ynh_hide_warnings corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" pnpm install --frozen-lockfile
 	#ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" env NX_DAEMON=false NX_WORKER_COUNT=1 NX_NATIVE=false CI=true pnpm run build
-	ynh_exec_as_app pnpm run build
-	#ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" pnpm run editor-ext:build
-	#ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" pnpm run server:build
-	#ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" pnpm run client:build
+	#ynh_exec_as_app pnpm run build
+	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" CI=true pnpm run editor-ext:build
+	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" CI=true pnpm run server:build
+	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" CI=true pnpm run client:build
 	ynh_exec_as_app pnpm store prune
 popd
 
