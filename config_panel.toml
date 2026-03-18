@@ -70,7 +70,7 @@ name.fr = "Stockage"
     ask.en = "Storage driver"
     ask.fr = "Storage driver"
     type = "select"
-    choices = ["filesystem", "s3", "in-memory", "azure-blob"]
+    choices = ["local", "s3"]
     bind = "DOCUMENT_STORAGE_DRIVER:__INSTALL_DIR__/.env"
 
 [main.storage_s3]
