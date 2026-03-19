@@ -49,13 +49,18 @@ pushd "$install_dir"
 
 ynh_script_progression "Compiling $app..."
 
-   	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run editor-ext:build
-
+    rm -rf "$install_dir/node_modules/.cache"
+ 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run editor-ext:build
+    
+    rm -rf "$install_dir/node_modules/.cache/nx"
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:build
 
-    rm -rf "$install_dir/node_modules/.cache/nx"
 ynh_script_progression "Building client..."
+
+    rm -rf "$install_dir/node_modules/.cache/nx"
 	ynh_exec_as_app NX_DAEMON=false CI=true pnpm run client:build
+
+ynh_exec_as_app pnpm install --frozen-lockfile --prod
 
 popd
 
