@@ -54,9 +54,9 @@ ynh_script_progression "Compiling $app..."
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:build
     sleep 60
 
-    ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:start
+    ynh_exec_as_app pnpm run server:start
 	ynh_exec_as_app NX_DAEMON=false pnpm run client:build
-	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:stop
+	ynh_exec_as_app pnpm run server:stop
 
 
 popd
