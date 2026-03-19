@@ -53,18 +53,6 @@ ynh_script_progression "Compiling $app..."
 
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:build
 
-ynh_script_progression "Sleeping 60s..."
-    sleep 60
-
-ynh_script_progression "Starting $app..."
-    ynh_exec_as_app pnpm run server:start
-
-ynh_script_progression "Building client..."
-
-	ynh_exec_as_app NX_DAEMON=false pnpm run client:build
-	ynh_exec_as_app pnpm run server:stop
-
-
 popd
 
 
@@ -76,6 +64,11 @@ ynh_script_progression "Adding system configurations related to $app..."
 ynh_config_add_nginx
 
 ynh_config_add_systemd --service="$app" 
+
+pushd "$install_dir"
+ynh_script_progression "Building client..."
+	ynh_exec_as_app NX_DAEMON=false pnpm run client:build
+popd
 
 yunohost service add "$app" --description="Docmost" --log="/var/log/$app/$app.log"
 
