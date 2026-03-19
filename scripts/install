@@ -45,9 +45,14 @@ pushd "$install_dir"
 	ynh_hide_warnings corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" pnpm install --frozen-lockfile
 
-ynh_script_progression "Compiling $app..."
-	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false  NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run editor-ext:build
-	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false  NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run server:build
+ynh_script_progression "Building editor-ext, server, and client..."
+pushd "$install_dir"
+# Editor-ext
+ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run editor-ext:build
+# Server
+ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run server:build
+# Client
+ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run client:build
 popd
 
 
@@ -72,11 +77,6 @@ ln -s "$data_dir" "$install_dir/data"
 ynh_script_progression "Starting $app's systemd service..."
 
 ynh_systemctl --service="$app" --action="start"
-pushd "$install_dir"
-	ynh_hide_warnings corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
-ynh_script_progression "Building client..."
-	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run client:build
-popd
 
 #=================================================
 # END OF SCRIPT
