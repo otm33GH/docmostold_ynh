@@ -53,6 +53,10 @@ ynh_script_progression "Compiling $app..."
 
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:build
 
+    rm -rf "$install_dir/node_modules/.cache/nx"
+ynh_script_progression "Building client..."
+	ynh_exec_as_app NX_DAEMON=false CI=true pnpm run client:build
+
 popd
 
 
@@ -65,10 +69,7 @@ ynh_config_add_nginx
 
 ynh_config_add_systemd --service="$app" 
 
-pushd "$install_dir"
-ynh_script_progression "Building client..."
-	ynh_exec_as_app NX_DAEMON=false CI=true pnpm run client:build
-popd
+
 
 yunohost service add "$app" --description="Docmost" --log="/var/log/$app/$app.log"
 
