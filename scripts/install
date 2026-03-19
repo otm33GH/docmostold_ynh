@@ -75,7 +75,7 @@ ynh_systemctl --service="$app" --action="start"
 pushd "$install_dir"
 	ynh_hide_warnings corepack enable && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
 ynh_script_progression "Building client..."
-	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false  NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run client:build
+	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run client:build
 popd
 
 #=================================================
