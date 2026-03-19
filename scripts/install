@@ -50,11 +50,11 @@ pushd "$install_dir"
 
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:build
     sleep 60
-	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run client:build
-popd
-    sleep 60
+	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:start
 
-ln -s "$data_dir" "$install_dir/data"
+	ynh_exec_as_app NX_DAEMON=false pnpm run client:build
+popd
+
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -69,12 +69,14 @@ yunohost service add "$app" --description="Docmost" --log="/var/log/$app/$app.lo
 
 ynh_config_add_logrotate
 
+ln -s "$data_dir" "$install_dir/data"
+
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service="$app" --action="start"
+ynh_systemctl --service="$app" --action="restart"
 
 #=================================================
 # END OF SCRIPT
