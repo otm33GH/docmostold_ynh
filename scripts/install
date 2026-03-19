@@ -47,7 +47,7 @@ pushd "$install_dir"
 	#ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" env NX_DAEMON=false NX_WORKER_COUNT=1 NX_NATIVE=false CI=true pnpm run build
 
 ynh_script_progression "Compiling $app..."
-	ynh_exec_as_app NX_DAEMON=false pnpm run build
+	ynh_exec_as_app NX_DAEMON=false NX_SKIP_NX_CACHE=true pnpm run build
 
 popd
 
