@@ -67,7 +67,7 @@ ynh_config_add_systemd --service="$app"
 
 pushd "$install_dir"
 ynh_script_progression "Building client..."
-	ynh_exec_as_app NX_DAEMON=false pnpm run client:build
+	ynh_exec_as_app NX_DAEMON=false CI=true pnpm run client:build
 popd
 
 yunohost service add "$app" --description="Docmost" --log="/var/log/$app/$app.log"
