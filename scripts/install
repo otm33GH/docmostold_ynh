@@ -60,7 +60,6 @@ ynh_script_progression "Building client..."
     rm -rf "$install_dir/node_modules/.cache/nx"
 	ynh_exec_as_app NX_DAEMON=false CI=true pnpm run client:build
 
-ynh_exec_as_app pnpm install --frozen-lockfile --prod
 
 popd
 
