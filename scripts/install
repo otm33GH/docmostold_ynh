@@ -52,7 +52,7 @@ ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISA
 # Server
 ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run server:build
 # Client
-ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run client:build
+ynh_exec_as_app pnpm run client:build
 popd
 
 
