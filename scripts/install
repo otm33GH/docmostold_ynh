@@ -52,9 +52,15 @@ ynh_script_progression "Compiling $app..."
    	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run editor-ext:build
 
 	ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false pnpm run server:build
+
+ynh_script_progression "Sleeping 60s..."
     sleep 60
 
+ynh_script_progression "Starting $app..."
     ynh_exec_as_app pnpm run server:start
+
+ynh_script_progression "Building client..."
+
 	ynh_exec_as_app NX_DAEMON=false pnpm run client:build
 	ynh_exec_as_app pnpm run server:stop
 
