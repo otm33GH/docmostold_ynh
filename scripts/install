@@ -47,12 +47,12 @@ pushd "$install_dir"
 
 ynh_script_progression "Building editor-ext, server, and client..."
 pushd "$install_dir"
-# Editor-ext
-ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run editor-ext:build
-# Server
-ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true NX_PERF_LOGGING=true pnpm run server:build
-# Client
-ynh_exec_as_app NX_DAEMON=false CI=true pnpm run client:build
+# Editor-ext ok
+ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true pnpm run editor-ext:build
+# Server ok
+ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true pnpm run server:build
+# Client ok
+ynh_exec_as_app NODE_OPTIONS="--max-old-space-size=4096" NX_DAEMON=false NX_DISABLE_NX_CACHE=true pnpm run client:build
 popd
 
 
