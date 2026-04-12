@@ -5,7 +5,7 @@ id = "docmost"
 name = "Docmost"
 description.en = "Collaborative wiki and documentation"
 description.fr = "Wiki collaboratif et documentation"
-version = "0.71.3~ynh1"
+version = "0.71.4~ynh1"
 
 maintainers = ["otm33GH"]
 
