@@ -47,8 +47,8 @@ ram.runtime = "500M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/otm33GH/docmost/archive/refs/tags/v0.95b.tar.gz"
-    sha256 = "90028acab41d651fd897e889f0d9b72b04cb0f02f55a99dceab5116fa7a9e7dc"
+    url = "https://github.com/otm33GH/docmost/archive/refs/tags/v0.95c.tar.gz"
+    sha256 = "5dd65774095e486ddeb751cd56fcc614fbe254a15d7b25695640345c7508a603"
     autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
